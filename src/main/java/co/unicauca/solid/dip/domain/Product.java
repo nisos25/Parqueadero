@@ -18,7 +18,7 @@ public class Product {
     }
 
     public int getIngresoId() {
-        return productId;
+        return ingresoId;
     }
 
     public void setIngresoId(int ingresoId) {
