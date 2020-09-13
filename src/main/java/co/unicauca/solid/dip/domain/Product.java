@@ -1,55 +1,48 @@
 package co.unicauca.solid.dip.domain;
 
-/**
- *
- * @author Libardo, Julio
- */
 public class Product {
 
-    private int productId;
+    private int ingresoId;
 
-    private String name;
+    private String tipo;
 
-    private double price;
+    private double tiempo;
 
-    public Product(int productId, String name, double price) {
-        this.productId = productId;
-        this.name = name;
-        this.price = price;
+    public Product(int ingresoId, String tipo, double tiempo) {
+        this.ingresoId = ingresoId;
+        this.tipo = tipo;
+        this.tiempo = tiempo;
     }
 
     public Product() {
     }
 
-    public int getProductId() {
+    public int getIngresoId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setIngresoId(int ingresoId) {
+        this.ingresoId = ingresoId;
     }
 
-    public String getName() {
-        return name;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public double getPrice() {
-        return price;
+    public double getTiempo() {
+        return tiempo;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setTiempo(double tiempo) {
+        this.tiempo = tiempo;
     }
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + productId + ", name=" + name + ", price=" + price + '}';
+        return "Product{" + "id=" + ingresoId + ", tipo=" + tipo + ", tiempo=" + tiempo + '}';
     }
-
-
-
 }
