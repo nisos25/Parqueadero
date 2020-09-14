@@ -1,7 +1,8 @@
-package co.unicauca.solid.dip.domain.access;
+package com.unicauca.tallerparqueadero.domain.access;
 
-import co.unicauca.solid.dip.domain.Product;
-import co.unicauca.solid.dip.domain.service.Service;
+import com.unicauca.tallerparqueadero.domain.Ingreso;
+import com.unicauca.tallerparqueadero.domain.AutoEnum;
+import com.unicauca.tallerparqueadero.service.Service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,31 +20,32 @@ import java.util.logging.Logger;
  *
  * @author Libardo, Julio
  */
-public class ProductRepository implements IProductRepository {
+public class IngresoRepository implements IIngresoRepository {
 
     private Connection conn;
 
-    public ProductRepository() {
+    public IngresoRepository() {
         initDatabase();
     }
 
     @Override
-    public boolean save(Product newProduct) {
+    public boolean save(Ingreso newIngreso) {
 
         try {
             //Validate product
-            if (newProduct == null || newProduct.getProductId() < 0 || newProduct.getName().isBlank()) {
+            if (newIngreso == null || newIngreso.getIngresoId() < 0 
+                    || newIngreso.getTipo().toString().isBlank() || newIngreso.getTiempo()<=0) {
                 return false;
             }
             //this.connect();
 
-            String sql = "INSERT INTO Product ( ProductId, Name, Price ) "
+            String sql = "INSERT INTO Ingreso ( IngresoId, Tipo, Tiempo ) "
                     + "VALUES ( ?, ?, ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, newProduct.getProductId());
-            pstmt.setString(2, newProduct.getName());
-            pstmt.setDouble(3, newProduct.getPrice());
+            pstmt.setInt(1, newIngreso.getIngresoId());
+            pstmt.setString(2, newIngreso.getTipo().toString());
+            pstmt.setInt(3, newIngreso.getTiempo());
             pstmt.executeUpdate();
             //this.disconnect();
             return true;
@@ -54,22 +56,24 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public List<Product> list() {
-        List<Product> products = new ArrayList<>();
+    public List<Ingreso> list() {
+        List<Ingreso> products = new ArrayList<>();
         try {
 
-            String sql = "SELECT ProductId, Name, Price FROM Product";
+            String sql = "SELECT IngresoId, Tipo, Tiempo FROM Ingreso";
             //this.connect();
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Product newProduct = new Product();
-                newProduct.setProductId(rs.getInt("ProductId"));
-                newProduct.setName(rs.getString("Name"));
-                newProduct.setPrice(rs.getDouble("Price"));
+                Ingreso newIngreso = new Ingreso();
+                newIngreso.setIngresoId(rs.getInt("IngresoId"));
+                String upperString= rs.getString("Tipo").toUpperCase();
+                AutoEnum autoEnum = AutoEnum.valueOf(upperString);
+                newIngreso.setTipo(autoEnum);
+                newIngreso.setTiempo(rs.getInt("Tiempo"));
 
-                products.add(newProduct);
+                products.add(newIngreso);
             }
             //this.disconnect();
 
@@ -81,10 +85,10 @@ public class ProductRepository implements IProductRepository {
 
     private void initDatabase() {
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS Product (\n"
-                + "	ProductId integer PRIMARY KEY,\n"
-                + "	Name text NOT NULL,\n"
-                + "	Price real\n"
+        String sql = "CREATE TABLE IF NOT EXISTS Ingreso (\n"
+                + "	IngresoId integer PRIMARY KEY,\n"
+                + "	Tipo text NOT NULL,\n"
+                + "	Tiempo integer\n"
                 + ");";
 
         try {
@@ -121,5 +125,8 @@ public class ProductRepository implements IProductRepository {
         }
 
     }
+  
+        
+    
+    }
 
-}
