@@ -11,8 +11,6 @@
 import java.text.ParseException;
 import org.junit.Test;
 import com.unicauca.tallerparqueadero.domain.*;
-//import org.junit.jupiter.api.Test;
-
 import static org.junit.Assert.*;
 public class TestTarifaCamion {
     Parqueadero parqueadero = new Parqueadero();
