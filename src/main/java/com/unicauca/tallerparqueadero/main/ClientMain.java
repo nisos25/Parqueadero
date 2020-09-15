@@ -26,8 +26,8 @@ public class ClientMain {
         IIngresoRepository repository = Factory.getInstance().getRepository("default");
         Service service = new Service(repository);
 
-        Ingreso newIngreso = new Ingreso(1,AutoEnum.CARRO,70);
-    
+        Ingreso newIngreso = new Ingreso(1,AutoEnum.CARRO,90);
+
         service.saveIngreso(newIngreso);
 
         newIngreso = new Ingreso(2,AutoEnum.CAMION,1770);
@@ -41,5 +41,4 @@ public class ClientMain {
         }
 
     }
-
 }

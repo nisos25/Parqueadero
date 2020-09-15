@@ -28,7 +28,7 @@ public class Service {
 
         //Validate product
         if (newIngreso == null || newIngreso.getIngresoId() < 0 
-                    || newIngreso.getTipo().toString().isBlank() || newIngreso.getTiempo()<=0) {
+                    || newIngreso.getTipo().toString().isBlank() || newIngreso.getTiempo()<=0 ) {
                 return false;
             }
 

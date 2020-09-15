@@ -28,7 +28,7 @@ public class TestTarifaCarro {
         Ticket ticket = new Ticket(AutoEnum.CARRO,10); 
         int precio = parqueadero.calcularTarifa(ticket);
         assertEquals(2000, precio);
-        }
+    }
     public void testCarroNoRedondeo() throws ParseException {
         System.out.println("Carro sin redondeo");
         Ticket ticket = new Ticket(AutoEnum.CARRO,120); 

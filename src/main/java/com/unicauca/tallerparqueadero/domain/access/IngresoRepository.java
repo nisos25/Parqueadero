@@ -3,6 +3,7 @@ package com.unicauca.tallerparqueadero.domain.access;
 import com.unicauca.tallerparqueadero.domain.Ingreso;
 import com.unicauca.tallerparqueadero.domain.AutoEnum;
 import com.unicauca.tallerparqueadero.service.Service;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,19 +34,20 @@ public class IngresoRepository implements IIngresoRepository {
 
         try {
             //Validate product
-            if (newIngreso == null || newIngreso.getIngresoId() < 0 
-                    || newIngreso.getTipo().toString().isBlank() || newIngreso.getTiempo()<=0) {
+            if (newIngreso == null || newIngreso.getIngresoId() < 0
+                    || newIngreso.getTipo().toString().isBlank() || newIngreso.getTiempo() <= 0) {
                 return false;
             }
             //this.connect();
 
-            String sql = "INSERT INTO Ingreso ( IngresoId, Tipo, Tiempo ) "
-                    + "VALUES ( ?, ?, ? )";
+            String sql = "INSERT INTO Ingreso ( IngresoId, Tipo, Tiempo, Tarifa) "
+                    + "VALUES ( ?, ?, ?, ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, newIngreso.getIngresoId());
             pstmt.setString(2, newIngreso.getTipo().toString());
             pstmt.setInt(3, newIngreso.getTiempo());
+            pstmt.setInt(4, newIngreso.getTarifa());
             pstmt.executeUpdate();
             //this.disconnect();
             return true;
@@ -60,19 +62,20 @@ public class IngresoRepository implements IIngresoRepository {
         List<Ingreso> products = new ArrayList<>();
         try {
 
-            String sql = "SELECT IngresoId, Tipo, Tiempo FROM Ingreso";
+            String sql = "SELECT IngresoId, Tipo, Tiempo, Tarifa FROM Ingreso";
             //this.connect();
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
+
             while (rs.next()) {
                 Ingreso newIngreso = new Ingreso();
                 newIngreso.setIngresoId(rs.getInt("IngresoId"));
-                String upperString= rs.getString("Tipo").toUpperCase();
+                String upperString = rs.getString("Tipo").toUpperCase();
                 AutoEnum autoEnum = AutoEnum.valueOf(upperString);
                 newIngreso.setTipo(autoEnum);
                 newIngreso.setTiempo(rs.getInt("Tiempo"));
-
+                newIngreso.setTarifa(rs.getInt("Tarifa"));
                 products.add(newIngreso);
             }
             //this.disconnect();
@@ -88,7 +91,8 @@ public class IngresoRepository implements IIngresoRepository {
         String sql = "CREATE TABLE IF NOT EXISTS Ingreso (\n"
                 + "	IngresoId integer PRIMARY KEY,\n"
                 + "	Tipo text NOT NULL,\n"
-                + "	Tiempo integer\n"
+                + "	Tiempo integer,\n"
+                + " Tarifa integer \n"
                 + ");";
 
         try {
@@ -125,8 +129,7 @@ public class IngresoRepository implements IIngresoRepository {
         }
 
     }
-  
-        
-    
-    }
+
+
+}
 

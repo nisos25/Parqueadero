@@ -8,6 +8,16 @@ public class Ticket {
 
     private AutoEnum tipoVehiculo;
     private int minutos;
+    private int tarifa;
+
+    public int getTarifa() {
+        return tarifa;
+    }
+
+    public void setTarifa(int tarifa) {
+        this.tarifa = tarifa;
+    }
+
 
     public AutoEnum getVehiculo() {
         return tipoVehiculo;
