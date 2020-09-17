@@ -7,7 +7,7 @@ package domain;
 
 /**
  *
- * @author juan-
+ * @author Nicolas Santander, Luis Romero
  */
 public enum VehicleEnum {
     CARRO, CAMION, MOTO
