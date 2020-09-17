@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author juan-
+ * @author Nicolas Santander, Luis Romero
  */
 public class Parking {
     
