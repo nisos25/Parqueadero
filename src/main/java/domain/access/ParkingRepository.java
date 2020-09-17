@@ -30,7 +30,7 @@ import java.util.logging.Logger;
 <<<<<<< Updated upstream:src/main/java/com/unicauca/tallerparqueadero/domain/access/IngresoRepository.java
 /**
  *
- * @author juan-
+ * @author Nicolas Santander, Luis Romero
  */
 <<<<<<< HEAD:src/main/java/com/unicauca/tallerparqueadero/domain/access/IngresoRepository.java
 public class IngresoRepository implements IIngresoRepository {
