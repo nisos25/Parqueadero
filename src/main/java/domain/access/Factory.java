@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package domain.access;
 
 import domain.CalculateFee;
@@ -5,10 +10,14 @@ import domain.CarFee;
 import domain.MotoFee;
 import domain.TruckFee;
 import domain.VehicleEnum;
-
 import java.util.EnumMap;
 import java.util.Map;
 
+/**
+ * Fábrica que utiliza el patrón de diseño Singleton
+ *
+ * @author Libardo, Julio
+ */
 public class Factory {
 
     private Map<VehicleEnum, CalculateFee> parkingDictionary;
@@ -57,7 +66,6 @@ public class Factory {
         return result;
 
     }
-
      public IParkingRepository getRepository(String type) {
 
         IParkingRepository result = null;

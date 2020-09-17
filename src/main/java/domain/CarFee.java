@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream:src/main/java/com/unicauca/tallerparqueadero/domain/TarifaCarro.java
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +7,7 @@ package domain;
 
 /**
  *
- * @author Nicolas Santander, Luis Romero
+ * @author User
  */
 public class CarFee extends CalculateFee {
       
@@ -21,22 +20,4 @@ public class CarFee extends CalculateFee {
          }    
         return tarifa;
     }   
-=======
-package domain;
-
-public class CarFee extends CalculateFee {
-
-    @Override
-    public int calculateFee(int parkingTime) {
-
-        fee = 2000;
-
-        if (parkingTime > 60) {
-            fee += (parkingTime - 60) * (50 / 3);
-            fee = roundUp(fee);
-        }
-
-        return fee;
-    }
->>>>>>> Stashed changes:src/main/java/domain/CarFee.java
 }
