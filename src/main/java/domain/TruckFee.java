@@ -7,7 +7,7 @@ package domain;
 
 /**
  *
- * @author User
+ * @author Nicolas Santander, Luis Romero
  */
 public class TruckFee extends CalculateFee {
 
