@@ -50,7 +50,7 @@ import java.util.List;
 
 /**
  *
- * @author Nicolas Santander, Luis Romero
+ * @author juan-
  */
 public class Service {
     
