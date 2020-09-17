@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< Updated upstream:src/main/java/com/unicauca/tallerparqueadero/domain/TarifaMoto.java
 package com.unicauca.tallerparqueadero.domain;
 /**
  *
@@ -18,6 +19,24 @@ public class TarifaMoto extends CalcularTarifa {
          }    
         return tarifa;
     }   
+=======
+package domain;
+
+public class MotoFee extends CalculateFee {
+
+    @Override
+    public int calculateFee(int parkingTime) {
+
+        fee = 1000;
+
+        if (parkingTime > 60) {
+            fee += (parkingTime - 60) * (25 / 3);
+            fee = roundUp(fee);
+        }
+
+        return fee;
+    }
+>>>>>>> Stashed changes:src/main/java/domain/MotoFee.java
 }
         
 

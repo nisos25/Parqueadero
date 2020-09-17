@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:src/main/java/com/unicauca/tallerparqueadero/domain/access/Factory.java
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,14 +11,19 @@ import com.unicauca.tallerparqueadero.domain.CalcularTarifa;
 import com.unicauca.tallerparqueadero.domain.TarifaCamion;
 import com.unicauca.tallerparqueadero.domain.TarifaCarro;
 import com.unicauca.tallerparqueadero.domain.TarifaMoto;
+=======
+package domain.access;
+
+import domain.CalculateFee;
+import domain.CarFee;
+import domain.MotoFee;
+import domain.TruckFee;
+import domain.VehicleEnum;
+
+>>>>>>> Stashed changes:src/main/java/domain/access/Factory.java
 import java.util.EnumMap;
 import java.util.Map;
 
-/**
- * Fábrica que utiliza el patrón de diseño Singleton
- *
- * @author Libardo, Julio
- */
 public class Factory {
 
     private Map<AutoEnum, CalcularTarifa> deliveryDictionary;
@@ -66,7 +72,12 @@ public class Factory {
         return result;
 
     }
+<<<<<<< Updated upstream:src/main/java/com/unicauca/tallerparqueadero/domain/access/Factory.java
      public IIngresoRepository getRepository(String type) {
+=======
+
+    public IParkingRepository getRepository(String type) {
+>>>>>>> Stashed changes:src/main/java/domain/access/Factory.java
 
         IIngresoRepository result = null;
 
