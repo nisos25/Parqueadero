@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.tallerparqueadero.domain;
+package domain.access;
+
+import domain.Parking;
+import java.util.List;
 
 /**
  *
- * @author User
+ * @author juan-
  */
-public enum AutoEnum {
-    CARRO, CAMION, MOTO
+public interface IParkingRepository {
+    boolean save(Parking newParking);
+
+    List<Parking> list();
 }

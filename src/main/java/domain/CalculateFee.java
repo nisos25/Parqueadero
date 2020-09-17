@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.tallerparqueadero.domain;
+package domain;
 
 /**
  *
  * @author User
  */
-public abstract class CalcularTarifa {
+public abstract class CalculateFee {
 
     protected int tarifa;
 
-    protected int redondear(int valor) {
+    protected int approximate(int valor) {
         int residuo = valor % 100;
         if (residuo != 0) {
             valor += 100 - residuo;

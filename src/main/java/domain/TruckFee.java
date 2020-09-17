@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.tallerparqueadero.domain;
+package domain;
 
 /**
  *
  * @author User
  */
-public class TarifaCamion extends CalcularTarifa {
+public class TruckFee extends CalculateFee {
 
     @Override
     public int CalcularTarifa(int minutos) {
         tarifa = 15000;
-        if (minutos < 720) {
+        if (minutos <= 720) {
             tarifa = 10000;
         } else if (minutos > 1440) {
             tarifa += (minutos - 1440) * (125.0 / 12.0);
-            tarifa = redondear(tarifa);
+            tarifa = approximate(tarifa);
         }
         if (Sortear()) {
             tarifa = 0;
@@ -26,8 +26,9 @@ public class TarifaCamion extends CalcularTarifa {
         return tarifa;
     }
 
+    //No pudimos testear esto sin tener que midificar nuestro proyecto y nuestra arquitectura
     private boolean Sortear() {
-        int numeroAleatorio = (int) (Math.random() * (1000 - 1)) + 1;;
+        int numeroAleatorio = (int) (Math.random() * (1000 - 1)) + 1;
         return tarifa % numeroAleatorio == 0;
     }
 
