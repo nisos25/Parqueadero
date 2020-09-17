@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author juan-
+ * @author Nicolas Santander, Luis Romero
  */
 public interface IParkingRepository {
     boolean save(Parking newParking);
