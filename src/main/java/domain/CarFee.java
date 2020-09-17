@@ -4,20 +4,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.tallerparqueadero.domain;
+package domain;
 
 /**
  *
- * @author User
+ * @author Nicolas Santander, Luis Romero
  */
-public class TarifaCarro extends CalcularTarifa {
+public class CarFee extends CalculateFee {
       
     @Override
     public int CalcularTarifa(int minutos) {
          tarifa=2000;
         if (minutos>60){
             tarifa += (minutos-60)*(50/3);
-            tarifa = redondear(tarifa);
+            tarifa = approximate(tarifa);
          }    
         return tarifa;
     }   

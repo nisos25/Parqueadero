@@ -4,21 +4,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.tallerparqueadero.domain;
+package domain;
 
 /**
  *
- * @author User
+ * @author Nicolas Santander, Luis Romero
  */
-public class TarifaCamion extends CalcularTarifa {
+public class TruckFee extends CalculateFee {
 
     @Override
     public int CalcularTarifa(int minutos) {
         tarifa = 15000;
-        if (minutos < 720) {
+        if (minutos <= 720) {
             tarifa = 10000;
         } else if (minutos > 1440) {
             tarifa += (minutos - 1440) * (125.0 / 12.0);
+<<<<<<< HEAD:src/main/java/com/unicauca/tallerparqueadero/domain/TarifaCamion.java
             tarifa = redondear(tarifa);
 =======
 package domain;
@@ -36,6 +37,9 @@ public class TruckFee extends CalculateFee {
             fee += (parkingTime - 1440) * (125.0 / 12.0);
             fee = roundUp(fee);
 >>>>>>> Stashed changes:src/main/java/domain/TruckFee.java
+=======
+            tarifa = approximate(tarifa);
+>>>>>>> ba20c8aadc5be6e12bffedc5162c853e687e36a5:src/main/java/domain/TruckFee.java
         }
 
         if (Sortear()) {
@@ -45,9 +49,14 @@ public class TruckFee extends CalculateFee {
         return fee;
     }
 
+    //No pudimos testear esto sin tener que midificar nuestro proyecto y nuestra arquitectura
     private boolean Sortear() {
+<<<<<<< HEAD:src/main/java/com/unicauca/tallerparqueadero/domain/TarifaCamion.java
 <<<<<<< Updated upstream:src/main/java/com/unicauca/tallerparqueadero/domain/TarifaCamion.java
         int numeroAleatorio = (int) (Math.random() * (1000 - 1)) + 1;;
+=======
+        int numeroAleatorio = (int) (Math.random() * (1000 - 1)) + 1;
+>>>>>>> ba20c8aadc5be6e12bffedc5162c853e687e36a5:src/main/java/domain/TruckFee.java
         return tarifa % numeroAleatorio == 0;
 =======
 

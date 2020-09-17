@@ -3,19 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< HEAD:src/main/java/com/unicauca/tallerparqueadero/domain/TarifaMoto.java
 <<<<<<< Updated upstream:src/main/java/com/unicauca/tallerparqueadero/domain/TarifaMoto.java
 package com.unicauca.tallerparqueadero.domain;
+=======
+package domain;
+
+>>>>>>> ba20c8aadc5be6e12bffedc5162c853e687e36a5:src/main/java/domain/MotoFee.java
 /**
  *
- * @author User
+ * @author Nicolas Santander, Luis Romero
  */
-public class TarifaMoto extends CalcularTarifa {
+public class MotoFee extends CalculateFee {
       @Override
     public int CalcularTarifa(int minutos) {
          tarifa=1000;
         if (minutos>60){
             tarifa += (minutos-60)*(25/3);
-            tarifa= redondear(tarifa);
+            tarifa= approximate(tarifa);
          }    
         return tarifa;
     }   
