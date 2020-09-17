@@ -1,26 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
-import java.util.Date;
-
-/**
- *
- * @author juan-
- */
 public class Parking {
     
     private int parkingId;
-    private VehicleEnum typeVehicle;
-    private int parkingMinutes;
+    private VehicleEnum vehicleType;
+    private int parkingTime;
 
-    public Parking(int parkingId, VehicleEnum typeVehicle, int parkingMinutes) {
+    public Parking(int parkingId, VehicleEnum vehicleType, int parkingTime) {
         this.parkingId = parkingId;
-        this.typeVehicle = typeVehicle;
-        this.parkingMinutes = parkingMinutes;
+        this.vehicleType = vehicleType;
+        this.parkingTime = parkingTime;
     }
 
     public Parking() {
@@ -31,29 +20,29 @@ public class Parking {
         return parkingId;
     }
 
-    public VehicleEnum getTypeVehicle() {
-        return typeVehicle;
+    public VehicleEnum getVehicleType() {
+        return vehicleType;
     }
 
-    public int getParkingMinutes() {
-        return parkingMinutes;
+    public int getParkingTime() {
+        return parkingTime;
     }
 
     public void setParkingId(int parkingId) {
         this.parkingId = parkingId;
     }
 
-    public void setTypeVehicle(VehicleEnum typeVehicle) {
-        this.typeVehicle = typeVehicle;
+    public void setVehicleType(VehicleEnum vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
-    public void setParkingMinutes(int parkingMinutes) {
-        this.parkingMinutes = parkingMinutes;
+    public void setParkingTime(int parkingTime) {
+        this.parkingTime = parkingTime;
     }
     
     @Override
     public String toString() {
         return "Ingreso: " + parkingId + ", tipo de vehículo: " + 
-                typeVehicle.toString().toLowerCase()+ ", tiempo =  " + parkingMinutes + " minutos";
+                vehicleType.toString().toLowerCase()+ ", tiempo =  " + parkingTime + " minutos";
     }
 }

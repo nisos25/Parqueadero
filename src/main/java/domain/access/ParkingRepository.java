@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain.access;
 
 import domain.Parking;
 import domain.VehicleEnum;
 import domain.service.Service;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,11 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author juan-
- */
-public class ParkingRepository implements IParkingRepository{
+public class ParkingRepository implements IParkingRepository {
 
     private Connection conn;
 
@@ -36,18 +28,18 @@ public class ParkingRepository implements IParkingRepository{
 
         try {
             //Validate product
-            if (newParking == null || newParking.getParkingMinutes()<= 0 || newParking.getTypeVehicle() == null) {
+            if (newParking == null || newParking.getParkingTime() <= 0 || newParking.getVehicleType() == null) {
                 return false;
             }
             //this.connect();
 
-            String sql = "INSERT INTO Parking ( ParkingId, TypeVehicle, ParkingMinutes ) "
+            String sql = "INSERT INTO Parking ( ParkingId, VehicleType, ParkingTime ) "
                     + "VALUES ( ?, ?, ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, newParking.getParkingId());
-            pstmt.setString(2, newParking.getTypeVehicle().name());
-            pstmt.setDouble(3, newParking.getParkingMinutes());
+            pstmt.setString(2, newParking.getVehicleType().name());
+            pstmt.setDouble(3, newParking.getParkingTime());
             pstmt.executeUpdate();
             //this.disconnect();
             return true;
@@ -62,7 +54,7 @@ public class ParkingRepository implements IParkingRepository{
         List<Parking> parking = new ArrayList<>();
         try {
 
-            String sql = "SELECT ParkingId, TypeVehicle, ParkingMinutes FROM Parking";
+            String sql = "SELECT ParkingId, VehicleType, ParkingTime FROM Parking";
             //this.connect();
 
             Statement stmt = conn.createStatement();
@@ -70,12 +62,12 @@ public class ParkingRepository implements IParkingRepository{
             while (rs.next()) {
                 Parking newParking = new Parking();
                 newParking.setParkingId(rs.getInt("ParkingId"));
-                String upperString = rs.getString("TypeVehicle").toUpperCase();
+                String upperString = rs.getString("VehicleType").toUpperCase();
                 VehicleEnum vehicleEnum = VehicleEnum.valueOf(upperString);
-                newParking.setTypeVehicle(vehicleEnum);
-                newParking.setParkingMinutes(rs.getInt("ParkingMinutes"));
+                newParking.setVehicleType(vehicleEnum);
+                newParking.setParkingTime(rs.getInt("ParkingTime"));
 
-                parking.add(newParking);   
+                parking.add(newParking);
 
             }
             //this.disconnect();
@@ -90,8 +82,8 @@ public class ParkingRepository implements IParkingRepository{
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Parking (\n"
                 + "	ParkingId integer PRIMARY KEY,\n"
-                + "	TypeVehicle text NOT NULL,\n"
-                + "	ParkingMinutes int\n"
+                + "	VehicleType text NOT NULL,\n"
+                + "	ParkingTime int\n"
                 + ");";
 
         try {
@@ -128,5 +120,5 @@ public class ParkingRepository implements IParkingRepository{
         }
 
     }
-    
+
 }

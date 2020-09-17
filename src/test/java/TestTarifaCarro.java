@@ -1,36 +1,27 @@
-/**
- *
- * @author User
- */
-
-import java.text.ParseException;
 import org.junit.Test;
 import domain.Parking;
 import domain.VehicleEnum;
 import domain.service.ParkingService;
+
 import static org.junit.Assert.*;
+
 public class TestTarifaCarro {
 
     @Test
-    public void testCarroRedondeo() throws ParseException {
+    public void testCarroRedondeo() {
         System.out.println("Carro mas de 60 minutos");
-        Parking parking = new Parking(1,VehicleEnum.CARRO,80); 
+        Parking parking = new Parking(1, VehicleEnum.CARRO, 80);
         int precio = new ParkingService().calculateParkingFee(parking);
         assertEquals(2400, precio);
-        }
+    }
 
-    /**
-     * Test de la clase ViajeIncentivo.
-     *
-     * @throws java.text.ParseException
-     */
     @Test
-    public void testCarroMenosTiempo() throws ParseException {
+    public void testCarroMenosTiempo() {
         System.out.println("Carro menos de 60 minutos");
-        Parking parking = new Parking(1,VehicleEnum.CARRO,10); 
+        Parking parking = new Parking(1, VehicleEnum.CARRO, 10);
         int precio = new ParkingService().calculateParkingFee(parking);
         assertEquals(2000, precio);
-        }
     }
+}
     
     

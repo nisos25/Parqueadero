@@ -1,26 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
-/**
- *
- * @author User
- */
 public abstract class CalculateFee {
 
-    protected int tarifa;
+    protected int fee;
 
-    protected int approximate(int valor) {
-        int residuo = valor % 100;
+    protected int roundUp(int value) {
+
+        int residuo = value % 100;
+
         if (residuo != 0) {
-            valor += 100 - residuo;
+            value += 100 - residuo;
         }
-        return valor;
+
+        return value;
     }
 
-    abstract public int CalcularTarifa(int minutos);
+    public abstract int calculateFee(int parkingTime);
 
 }

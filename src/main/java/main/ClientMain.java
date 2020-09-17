@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import domain.access.IParkingRepository;
@@ -11,10 +6,6 @@ import domain.VehicleEnum;
 import domain.access.Factory;
 import domain.service.Service;
 
-/**
- *
- * @author juan-
- */
 public class ClientMain {
 
     /**
@@ -35,6 +26,5 @@ public class ClientMain {
             System.out.println(p.toString());
             System.out.println(service.calculateFee(p));
         }
-        //CP
     }
 }
