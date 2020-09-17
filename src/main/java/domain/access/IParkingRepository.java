@@ -17,7 +17,7 @@ public interface IParkingRepository {
 =======
 /**
  *
- * @author juan-
+ * @author Nicolas Santander, Luis Romero
  */
 public interface IParkingRepository {
 >>>>>>> ba20c8aadc5be6e12bffedc5162c853e687e36a5
